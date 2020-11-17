@@ -1,25 +1,26 @@
 #!/bin/bash
 
-#créer un dossier pour le fastQC
+# Dossier par défaut
 
-#cd mydatalocal
+results="/ifb/data/mydatalocal/results"
+mkdir -p $results
+cd $results
 
-#mkdir results
+# créer un dossier spécifique
+results_fastqc="fastqc_results"
+mkdir -p $results_fastqc
+cd $results_fastqc
 
-#cd results
+#Récupération des données
 
-#mkdir fastqc
-
-#cd ../..
+home_fastq="/ifb/data/mydatalocal/dosnload/FASTQ/"
+fastq=$home_fastq/"*.gz"
 
 #vériication de fastq
 fastqc -o /ifb/data/mydatalocal/results /ifb/data/mydatalocal/download/FASTQ/Lib1_31_20_S1_R1_001.fastq.gz
 #boucle d'analyse
-for fichier in /ifb/data/mydatalocal/download/FASTQ/*.gz
+for fichier in $fastq
 do
 echo "voici $fichier"
-fastqc -o /ifb/data/mydatalocal/results/fastqc $fichier
+fastqc $fichier -o $results/results_fastqc 
 done
-
-#changer le outpout du fastqc
-fastqc -o /ifb/data/mydatalocal/results/fastqc
