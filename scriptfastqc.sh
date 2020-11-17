@@ -18,7 +18,7 @@ fastqc -o /ifb/data/mydatalocal/results /ifb/data/mydatalocal/download/FASTQ/Lib
 for i in /ifb/data/mydatalocal/download/FASTQ/*.gz
 do
 echo "voici $i"
-fastqc -o /ifb/data/mydatalocal/results $i
+fastqc -o /ifb/data/mydatalocal/results/fastqc $i
 done
 
 #changer le outpout du fastqc
