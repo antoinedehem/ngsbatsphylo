@@ -15,14 +15,14 @@ mkdir -p $results_blast
 gene=$1
 cd $download
 QUERYDIR=$download/"all_aln/"
-QUERY=$QUERYDIR/"$gene.fas"
+QUERY=$QUERYDIR"$gene.fas"
 
 if [ -e $QUERY ] ; then
   echo $QUERY "exists"
   
   Transdecoder=$results"/transdecoder_results/transdecoder_results/longest_orfs.cds"
   Blastdbdir=$download/"db/"
-  Blastdb=$Blastdbdir/"Myotis_velifer_cds.db"
+  Blastdb=$Blastdbdir"Myotis_velifer_cds.db"
   db=$Blastdb.nhr
   mkdir -p $Blastdbdir
   
@@ -39,7 +39,7 @@ if [ -e $QUERY ] ; then
     echo "$blast exists"
     else
     echo "$blast is empty"
-    /softwares/ncbi-blast-2.10.1+/bin/blastn -db $Blastdb -query $QUERY -evalue 1e-28 -outfmt 5 -out $gene".blast" 
+    /softwares/ncbi-blast-2.10.1+/bin/blastn -db $Blastdb -query $QUERY -evalue 1e-28 -outfmt 6 -out $gene".blast" 
     fi ;
 else
 echo "bliiiiiip"
