@@ -18,11 +18,9 @@ trinity_map=${home_trinity}/"Trinity_RF.fasta.gene_trans_map"
 echo "voici $trinity"
 echo "voici $trinity_map"
 
-TransDecoder.LongOrfs -t $trinity --gene_trans_map $trinity_map -S -O $results_transdecoder
-
-#step 2 (optional)
+TransDecoder.LongOrfs -t $trinity --gene_trans_map $trinity_map -S -O ${results}/${results_transdecoder}
+#step 2 optional
 
 #step 3 predict the likely coding regions
-TransDecoder.Predict -t $trinity --single_best_only --output_dir $results_transdecoder
-
+TransDecoder.Predict -t $trinity --single_best_only -O ${results}/${results_transdecoder}
 echo 'the end!'
