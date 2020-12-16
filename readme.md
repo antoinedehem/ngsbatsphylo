@@ -36,3 +36,9 @@ But de Transdecoder: analyse les données assemblées par trinity pour trouver l
 
 But de BLAST: trouve des alignements locaux entre une séquence de référence et une séquence d'intérêt
 On va par exemple blaster nos données Trinity avec des séquences de références PKR (une famille d'ISGs) d'une espèce connue: Myotis lucifugus (espèce la plus proche) ou Homo Sapiens (espèce la mieux annotée). On choisit l'approche la plus simple : Homo Sapiens. (voir le scriptblast.sh dans 3_data_annotation)
+
+##J5 Corrections Transcoder, Blast
+le script Blast renvoie réguliérement des fichiers vides. Après recherche de l'erreur avec le groupe et Marie on se rend compte que mes sorties Transdecoder sont très petites: erreur dans le script transdecoder qui donne à manger à Blast un fichier incomplet.
+Problème: Transdecoder commence à écrire et s'arrête au bout de 3,9Mb->problème d'espace sur le dique ? J'ai trouvé dans mes résultats de TRinity des fichiers temporaires de 50, 20 Giga chacun-> j'ai dû stopper le script en cours d'exécution et les fichiers temporaires n'ont pas été nettoyés! Suppression de ces fichiers car les résultats de Trinity ont été donnés et mis dans download/Trinity par les intervenants
+Le script Transdecoder semble bien fonctionner maintenant->je recommence Transdecoder puis Blast
+Blast ne fonctionne pas, en fait le Transdecoder.predict ne fait rien, cherche une solution.(mauvais fichier donné ? Non c'est bon) Je relance Transcoder.
