@@ -16,7 +16,7 @@ Le logiciel a été lancé sur la nuit
 
 ##J2 : Résultats fastqc brutes et Trimmomatic
 
-  Les résutats du fastqc ont été passés en revue, les principaux soucis sont : séquence de l'adaptateur pollue les données, 5 premiers nucléotides des fragments sont potentiellement riches en erreurs, on veut supprimer les séquences trop courtes ![tableau des résultats fastqc](images/tableau_fastqc.jpg)
+  Les résutats du fastqc ont été passés en revue, les principaux soucis sont : séquence de l'adaptateur pollue les données, 5 premiers nucléotides des fragments sont potentiellement riches en erreurs, on veut supprimer les séquences trop courtes ![tableau des résultats fastqc](images/tableau_fastqc.jpg) légende : tableau des résultats fastqc
   
   On prépare donc un script trimmomatic permettant de résoudre ces soucis en nettoyant les données. Ce logiciel créé de nouveaux fichiers fastq nettoyés. Les paramètres choisis ont été : HEADCROP=5 (5 premiers nucléotides des séquences supprimés)/ILLUMINACLIP=adapt.fasta (on supprime les parties de séquence trop similaire à l'adaptateur compris dans adapt.fasta)/MINLEN=100 (on supprime les séquences de moins de 100 nucléotides) (voir le script scripttrimomatic.sh dans 1_fastqc_trimomatic)
 On laisse tourner Trimmomatic sur la nuit
@@ -47,7 +47,7 @@ PRANK et PhyML : ne sont pas installés sur les VM, il faut donc les télécharg
 TRIMAL nécessaire pour utiliser PhyML et donc à installer aussi
 Prank : réalisation d'un script permettant d'aligner les séquences obtenues après Blast puis conversion en fichier Phylip pour utilisation par PhyML. On teste différents paramètres pour trouver ceux peremettant le meilleur alignement. (voir scriptprank.sh dans 4_multi_sequence_alignment)
 Les résultats de prank sont visualisés via le logiciel Seaview permettant de se rendre compte qu'il n'y a pas l'air d'avoir d'aberrations dans les alignements
-![alignement multi-séquences pour la famille PKR visualisé dans Seaview](images/alignement_PKR.jpg)
+![alignement multi-séquences pour la famille PKR visualisé dans Seaview](images/alignement_PKR.jpg) légende : alignement multi-séquences pour la famille PKR visualisé dans Seaview
 ###J6
 Rq:Trinity ne sait pas toujours distinguer 2 copies si elles sont trop proches (le cas pour BST2), pour régler le soucis il faudrait avoir un génome en référence pour mapper les données
 Pour analyser les fichiers de trinity : grep ">" -c /ifb/data/mydatalocal/download/trinity/Trinity_RF.fasta donne le nombre de contigs, on en compte environ 400 000 ce qui est énorme
@@ -56,4 +56,9 @@ Pour analyser le fichier transdecoder : grep ">" -c ifb/data/mydatalocal/results
 Trimal: Le script pour la conversion du fichier de sortie de Prank au format Phylip via trimal est ajouté à scriptprank.sh dans 4_multi_sequence_alignment
 
 Phyml: idem que pour trimal ajout à scriptprank.sh
-Les arbres obtenus sont analysés et permettent d'émettre les hypothèses suivantes : un phénomène de duplication récente d'un gène PKR semble avoir lieu chez l'espèce myotis velifer. ![arbre phylogénétique de la famille de gènes PKR chez les chauve-souris](images/arbre_pkr.jpg) Un phénomène de duplication ancien semble caractériser l'histoire évolutive de la famille de gènes SAMD9-SAMD9L. ![arbre phylogénétique de la famille de gènes PKR chez les chauve-souris](images/arbre_samd9.jpg) L'arbre de la famille de gènes BST2 fait apparaître 11 homologues chez l'espèce mytois velifer, cela semble être un artefact venant de trinity qui aurait identifié un trop grand nombre de transcrits.![arbre phylogénétique de la famille de gènes PKR chez les chauve-souris](images/arbre_bst2.jpg)
+Les arbres obtenus sont analysés et permettent d'émettre les hypothèses suivantes : un phénomène de duplication récente d'un gène PKR semble avoir lieu chez l'espèce myotis velifer. 
+![arbre phylogénétique de la famille de gènes PKR chez les chauve-souris](images/arbre_pkr.jpg) 
+Un phénomène de duplication ancien semble caractériser l'histoire évolutive de la famille de gènes SAMD9-SAMD9L. 
+![arbre phylogénétique de la famille de gènes SAMD9-SAMD9L chez les chauve-souris](images/arbre_samd9.jpg) légende : arbre phylogénétique de la famille de gènes SAMD9-SAD9L chez les chauve-souris 
+L'arbre de la famille de gènes BST2 fait apparaître 11 homologues chez l'espèce mytois velifer, cela semble être un artefact venant de trinity qui aurait identifié un trop grand nombre de transcrits.
+![arbre phylogénétique de la famille de gènes BST2 chez les chauve-souris](images/arbre_bst2.jpg) légende : arbre phylogénétique de la famille de gènes BST2 chez les chauve-souris
