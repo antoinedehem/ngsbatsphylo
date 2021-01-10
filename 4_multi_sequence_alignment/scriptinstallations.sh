@@ -1,4 +1,4 @@
-
+#Ce script comprend les lignes de code ayant été utilisées pour installer les logiciel prank, trimal et phyml sur la machine virtuelle
 ###Prank
 cd /ifb/data/mydatalocal/softwares
 wget http://wasabiapp.org/download/prank/prank.linux64.170427.tgz
@@ -16,6 +16,7 @@ cd phyml
 ./configure --enable-phyml
 make
 
+###trimal
 export PATH=$PATH:/ifb/data/mydatalocal/softwares/phyml/src/
 cd ..
 git clone https://github.com/scapella/trimal.git
