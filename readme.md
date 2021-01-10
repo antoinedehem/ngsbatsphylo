@@ -49,6 +49,7 @@ Prank : réalisation d'un script permettant d'aligner les séquences obtenues ap
 Les résultats de prank sont visualisés via le logiciel Seaview permettant de se rendre compte qu'il n'y a pas l'air d'avoir d'aberrations dans les alignements
 ![alignement multi-séquences pour la famille PKR visualisé dans Seaview](images/alignement_PKR.jpg) 
 légende : alignement multi-séquences pour la famille PKR visualisé dans Seaview
+
 ###J6
 Rq:Trinity ne sait pas toujours distinguer 2 copies si elles sont trop proches (le cas pour BST2), pour régler le soucis il faudrait avoir un génome en référence pour mapper les données
 Pour analyser les fichiers de trinity : grep ">" -c /ifb/data/mydatalocal/download/trinity/Trinity_RF.fasta donne le nombre de contigs, on en compte environ 400 000 ce qui est énorme
